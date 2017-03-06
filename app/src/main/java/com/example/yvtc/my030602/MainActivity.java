@@ -14,12 +14,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn = (Button)findViewById(R.id.button);
-        MyClass c= new MyClass();
-        btn.setOnClickListener(c);
+        btn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Log.d("BTN","Test1");
+            }
+        });
     }
-    class MyClass implements View.OnClickListener{
-        public void onClick(View v){
-            Log.d("BTN","Test1");
-        }
-    }
+
 }
