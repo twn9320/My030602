@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button btn,btn2;
+    ToggleButton tb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,16 +17,25 @@ public class MainActivity extends AppCompatActivity {
 
         btn = (Button)findViewById(R.id.button);
         btn2 = (Button)findViewById(R.id.button2);
-        btn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Log.d("BTN","Test1");
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Log.d("BTN","Test2");
-            }
-        });
+        tb=(ToggleButton)findViewById(R.id.toggleButton);
+        btn.setOnClickListener(this);
+        btn2.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.button:
+                Log.d("BTN", "Test1");
+                break;
+            case R.id.button2:
+                Log.d("BTN","TEST2");
+                if(tb.isChecked()){
+                    Log.d("TB","開起");
+                }
+                else{
+                    Log.d("TB","關閉");
+                }
+        }
+    }
 }
